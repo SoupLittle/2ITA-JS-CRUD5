@@ -33,12 +33,10 @@ document.querySelectorAll('.options button').forEach(button => {
     const computerChoice = options[Math.floor(Math.random() * options.length)];
     const result = getResult(playerChoice, computerChoice);
     document.getElementById('result').innerText = `Player: ${playerChoice} | Computer: ${computerChoice} | ${result}`;
-
-    console.log("Player Choice:", playerChoice);
-    console.log("Computer Choice:", computerChoice);
-    console.log("Result:", result);    
+ 
     
     // Save result to Firebase
+    
     const resultsRef = ref(database, 'Results'); 
     const newResultRef = ref(database, `Results/${generateNewResultKey()}`);
 
@@ -57,6 +55,7 @@ function generateNewResultKey() {
     } 
   });
 });
+
 
 //Result text
 
