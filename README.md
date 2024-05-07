@@ -21,6 +21,10 @@ Spillresultatene lagres i Firebase Realtime Database. En referanse til databasen
 1. Last ned prosjektfilene eller klone dette repositoryet.
 2. Åpne `index.html` i en nettleser.
 
+### Alternativt
+
+Klikk linken i "About" seksjonen.
+
 
 ## Skjermbilde
 
