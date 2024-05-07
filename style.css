@@ -38,3 +38,25 @@ body {
     margin-top: 20px;
     font-size: 20px;
 }
+
+/* Buttons */
+
+.hide-label {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.button-container {
+    position: relative;
+    display: inline-block;
+}
+
+.options button:hover + .hide-label {
+    display: block;
+}

@@ -25,7 +25,7 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app); 
 
 // Game logic
-const options = ["rock", "paper", "scissors"];
+const options = ["Rock", "Paper", "Scissors"];
 
 document.querySelectorAll('.options button').forEach(button => {
   button.addEventListener('click', () => {
@@ -39,12 +39,12 @@ document.querySelectorAll('.options button').forEach(button => {
     console.log("Result:", result);    
     
     // Save result to Firebase
-    const resultsRef = ref(database, 'results'); 
-    const newResultRef = ref(database, `results/${generateNewResultKey()}`);
+    const resultsRef = ref(database, 'Results'); 
+    const newResultRef = ref(database, `Results/${generateNewResultKey()}`);
 
-set(newResultRef, {"player": playerChoice, "computer": computerChoice, "result": result})
+set(newResultRef, {"Player": playerChoice, "Computer": computerChoice, "Result": result})
   .then(() => {
-    alert("Data stored successfully");
+    console.log("Data stored successfully");
   })
   .catch((error) => {
     console.error("Error:", error);
@@ -52,69 +52,27 @@ set(newResultRef, {"player": playerChoice, "computer": computerChoice, "result":
   });
 
 function generateNewResultKey() {
-  // Generate a unique key (e.g., timestamp) for the new result
-  return Date.now().toString(); // Use current timestamp as the key
-}
 
-    
+  return Date.now().toString();
+    } 
   });
 });
 
+//Result text
+
 function getResult(player, computer) {
-  player = player.toLowerCase(); // Convert to lowercase to match button ids
-  computer = computer.toLowerCase(); // Convert to lowercase to match options array
+  player = player.toLowerCase(); 
+  computer = computer.toLowerCase();
   if (player === computer) return "It's a tie!";
-  if ((player === "rock" && computer === "scissors") ||
-      (player === "paper" && computer === "rock") ||
-      (player === "scissors" && computer === "paper")) {
+
+  if ((player === "Rock" && computer === "Scissors") ||
+      (player === "Paper" && computer === "Rock") ||
+      (player === "Scissors" && computer === "Paper")) 
+      
+      {
     return "Player wins!";
   } else {
     return "Computer wins!";
   }
 }
-
-
-
-
-
-
-// // Initialize Firebase
-// var app = initializeApp(firebaseConfig);
-// var analytics = getAnalytics(app);
-// var database = getDatabase(app); 
-
-
-// // Game logic
-// var options = ["rock", "paper", "scissors"];
-
-// document.querySelectorAll('.options button').forEach(button => {
-//     button.addEventListener('click', () => {
-//         var playerChoice = button.id;
-//         var computerChoice = options[Math.floor(Math.random() * options.length)];
-//         var result = getResult(playerChoice, computerChoice);
-//         document.getElementById('result').innerText = `Player: ${playerChoice} | Computer: ${computerChoice} | ${result}`;
-
-//         console.log("Player Choice:", playerChoice);
-//         console.log("Computer Choice:", computerChoice);
-//         console.log("Result:", result);    
-        
-//         // Save result to Firebase
-//         const resultsRef = ref(database, 'results'); 
-//         const newResultRef = push(resultsRef);
-//         set(newResultRef, {"player": playerChoice, "computer": computerChoice, "result": result});    
-//     });
-
-//     });
-
-
-// function getResult(player, computer) {
-//     if (player === computer) return "It's a tie!";
-//     if ((player === "Rock" && computer === "Scissors") ||
-//         (player === "Paper" && computer === "Rock") ||
-//         (player === "Scissors" && computer === "Paper")) {
-//         return "Player wins!";
-//     } else {
-//         return "Computer wins!";
-//     }
-// }
 

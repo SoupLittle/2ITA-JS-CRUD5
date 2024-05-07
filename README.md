@@ -10,7 +10,7 @@ Spillet tillater spillere å velge mellom Stein, Saks eller Papir. Deretter gene
 
 - `index.html`: Inneholder HTML-strukturen for spillet og kobler til CSS og JavaScript-filer.
 - `styles.css`: Definerer utseendet på spillet.
-- `app.js`: Inneholder JavaScript-koden for spillets logikk, inkludert behandling av spillervalg, beregning av resultatet og lagring av resultater i Firebase-databasen.
+- `index.js`: Inneholder JavaScript-koden for spillets logikk, inkludert behandling av spillervalg, beregning av resultatet og lagring av resultater i Firebase-databasen.
 
 ## Firebase
 
@@ -21,11 +21,7 @@ Spillresultatene lagres i Firebase Realtime Database. En referanse til databasen
 1. Last ned prosjektfilene eller klone dette repositoryet.
 2. Åpne `index.html` i en nettleser.
 
-## Forbedringspotensial
-
-- Implementere brukerregistrering for å lagre spillerstatistikk.
-- Legge til flere spillmoduser eller spillvariasjoner.
 
 ## Skjermbilde
 
-![Stein Saks Papir Skjermbilde](screenshot.png)
+![Stein Saks Papir Skjermbilde](image.png)
