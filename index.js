@@ -6,7 +6,7 @@ import { getDatabase, ref, set  } from "https://www.gstatic.com/firebasejs/10.11
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyCv9iZBmukWyh9V2hdKrVdG3aSIjZnvhYY",
     authDomain: "js-crud-5-b0981.firebaseapp.com",
     databaseURL: "https://js-crud-5-b0981-default-rtdb.firebaseio.com/",
@@ -20,23 +20,25 @@ var firebaseConfig = {
 
   
 // Initialize Firebase
-var app = initializeApp(firebaseConfig);
-var analytics = getAnalytics(app);
-var database = getDatabase(app); 
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app); 
 
 // Game logic
-var options = ["Rock", "Paper", "Scissors"];
+const options = ["Rock", "Paper", "Scissors"];
 
 document.querySelectorAll('.options button').forEach(button => {
   button.addEventListener('click', () => {
-    var playerChoice = button.id;
-    var computerChoice = options[Math.floor(Math.random() * options.length)];
-    var result = getResult(playerChoice, computerChoice);
+    const playerChoice = button.id;
+    const computerChoice = options[Math.floor(Math.random() * options.length)];
+    const result = getResult(playerChoice, computerChoice);
     document.getElementById('result').innerText = `Player: ${playerChoice} | Computer: ${computerChoice} | ${result}`;
  
     
     // Save result to Firebase
     
+    const newResultRef = ref(database, `Results/${generateNewResultKey()}`);
+
       set(newResultRef, {"Player": playerChoice, "Computer": computerChoice, "Result": result})
         .then(() => {
           console.log("Data stored successfully");
@@ -47,14 +49,12 @@ document.querySelectorAll('.options button').forEach(button => {
         alert("Unsuccessful, error" + error);
       });
 
-      var newResultRef = ref(database, `Results/${generateNewResultKey()}`);
+function generateNewResultKey() {
 
-        function generateNewResultKey() {
-
-        return Date.now().toString();
-       } 
-    });
+  return Date.now().toString();
+    } 
   });
+});
 
 
 //Result text
